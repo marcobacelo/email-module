@@ -1,4 +1,4 @@
-package dev.model;
+package module.dev.model;
 
 public class Email {
 
@@ -6,8 +6,7 @@ public class Email {
 
     private String address;
 
-    private String text;
-
+    private String body;
 
     public String getSubject() {
         return subject;
@@ -25,11 +24,11 @@ public class Email {
         this.address = address;
     }
 
-    public String getText() {
-        return text;
+    public String getBody() {
+        return body;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setBody(String body) {
+        this.body = body;
     }
 }
