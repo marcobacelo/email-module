@@ -1,3 +1,4 @@
 .idea
-email-module.iml
 target
+email-core.iml 
+email-module.iml
