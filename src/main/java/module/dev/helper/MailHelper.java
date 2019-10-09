@@ -1,6 +1,8 @@
 package module.dev.helper;
 
-import module.dev.model.Email;
+import module.dev.exceptions.SmtpException;
+import org.springframework.mail.MailSendException;
+import org.springframework.mail.MailAuthenticationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,24 +27,32 @@ public class MailHelper {
 
     private Logger logger = LoggerFactory.getLogger(MailHelper.class);
 
-    public String sendSimpleMessage(String to, String subject, String body) {
+    public String prepareMessage(String to, String subject, String body) throws SmtpException {
         List<String> toList = new ArrayList<>();
         toList.add(to);
 
         sendSimpleMessage(toList, subject, body);
 
-        return "EMAIL ENVIADO COM SUCESSO";
+        throw new
     }
 
-    public void sendSimpleMessage(List<String> to, String subject, String text) {
+    public void sendSimpleMessage(List<String> to, String subject, String text) throws SmtpException {
 
-        logger.info("Sending mail to: " + to.toString());
+        try {
+            logger.info("Sending mail to: " + to.toString());
 
-        message.setTo(to.toArray(new String[0]));
-        message.setFrom(from);
-        message.setSubject(subject);
-        message.setText(text);
+            message.setTo(to.toArray(new String[0]));
+            message.setFrom(from);
+            message.setSubject(subject);
+            message.setText(text);
 
-        emailSender.send(message);
+            emailSender.send(message);
+        } catch (MailAuthenticationException e) {
+            System.out.println("Falha de autenticação com o SMTP !!!");
+            throw new SmtpException(message.toString());
+        } catch (MailSendException s) {
+            System.out.println("\nEndereço de email inválido !!!\n");
+            throw new SmtpException(message.toString());
+        }
     }
 }
