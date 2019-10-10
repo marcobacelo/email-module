@@ -1,12 +1,13 @@
 package module.dev.helper;
 
-import module.dev.exceptions.SmtpException;
-import org.springframework.mail.MailSendException;
-import org.springframework.mail.MailAuthenticationException;
+import module.dev.exceptions.MailAuthenticationErrorException;
+import module.dev.exceptions.MailSendErrorException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.MailAuthenticationException;
+import org.springframework.mail.MailSendException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -27,17 +28,16 @@ public class MailHelper {
 
     private Logger logger = LoggerFactory.getLogger(MailHelper.class);
 
-    public String prepareMessage(String to, String subject, String body) throws SmtpException {
+    public String prepareMessage(String to, String subject, String body)
+            throws MailSendErrorException, MailAuthenticationErrorException {
         List<String> toList = new ArrayList<>();
         toList.add(to);
 
-        sendSimpleMessage(toList, subject, body);
-
-        throw new
+        return sendSimpleMessage(toList, subject, body);
     }
 
-    public void sendSimpleMessage(List<String> to, String subject, String text) throws SmtpException {
-
+    public String sendSimpleMessage(List<String> to, String subject, String text)
+            throws MailAuthenticationErrorException, MailSendErrorException {
         try {
             logger.info("Sending mail to: " + to.toString());
 
@@ -47,12 +47,11 @@ public class MailHelper {
             message.setText(text);
 
             emailSender.send(message);
+            return "\nEmail sended successfully!\n";
         } catch (MailAuthenticationException e) {
-            System.out.println("Falha de autenticação com o SMTP !!!");
-            throw new SmtpException(message.toString());
+            throw new MailAuthenticationErrorException(e.getMessage(), message.toString());
         } catch (MailSendException s) {
-            System.out.println("\nEndereço de email inválido !!!\n");
-            throw new SmtpException(message.toString());
+            throw new MailSendErrorException(s.getMessage(), message.toString());
         }
     }
 }
