@@ -7,12 +7,12 @@ services:
       - ./:/app
     container_name: 'email-module'
     ports:
-      - 32750:8080
+      - 32801:8080
   mysql:
     image: mysql:5.6
     container_name: 'mysql-email-module'
     ports:
-      - 32751:3306
+      - 32800:3306
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: email_module
