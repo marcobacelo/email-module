@@ -6,13 +6,15 @@ public class SmtpException extends Exception {
     private String log = "";
 
     public SmtpException() {
+        super(DEFAULT_MESSAGE);
     }
 
-    public SmtpException(String log) {
-        super(log);
+    public SmtpException(String message) {
+        super(message);
     }
 
-    public SmtpException(String log, Throwable throwable) {
-        super(log);
+    public SmtpException(String message, String log) {
+        super(message);
+        this.log = log;
     }
 }
