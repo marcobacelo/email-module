@@ -1,0 +1,6 @@
+[submodule "core_mail_module"]
+	path = core_mail_module
+	url = https://github.com/marcobacelo/core_mail_module.git
+[submodule "front_end_mail_module"]
+	path = front_end_mail_module
+	url = https://github.com/marcobacelo/front_end_mail_module.git
