@@ -13,6 +13,13 @@ It's a simple service for send emails
 
 ### Development ###
 
+#### Cloning the submodules ####
+
+This project it's using Submodules, So, you need to clone them with the following command:
+```bash
+git submodule update --init
+```
+
 #### Download and install docker-ce ####
 
 * Linux: https://www.digitalocean.com/community/tutorials/como-instalar-e-usar-o-docker-no-ubuntu-16-04-pt
