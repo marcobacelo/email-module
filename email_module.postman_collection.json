@@ -1,0 +1,67 @@
+{
+	"info": {
+		"_postman_id": "26990f15-c7ff-4fbf-864a-72a973d14247",
+		"name": "email_module",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:32801/api/mail/send_mail",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"subject\": \"ASSUNTO 1\",\n        \"address\": \"marcobacelo90@gmail.com\",\n        \"body\": \"BODY 1\"\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:32801/api/mail/send_mail",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "32801",
+					"path": [
+						"api",
+						"mail",
+						"send_mail"
+					]
+				},
+				"description": "POST REQUEST"
+			},
+			"response": []
+		},
+		{
+			"name": "http://172.22.0.1:32801/api/mail/get_all_mails",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://172.22.0.1:32801/api/mail/get_all_mails",
+					"protocol": "http",
+					"host": [
+						"172",
+						"22",
+						"0",
+						"1"
+					],
+					"port": "32801",
+					"path": [
+						"api",
+						"mail",
+						"get_all_mails"
+					]
+				},
+				"description": "GET REQUEST"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
