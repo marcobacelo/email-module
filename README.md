@@ -3,7 +3,7 @@
   <img src="angular.png" alt="logo_angular" width="220px" />
 </h1>
 
-# Email Module Core #
+# Email Module #
 
 ## Objectives ##
 
