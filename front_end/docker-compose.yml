@@ -1,0 +1,9 @@
+version: '3.7'
+
+services:
+  ng_cli_front_end:
+    build: .
+    volumes:
+      - ./:/app
+    ports:
+      - 32750:4200
