@@ -1,18 +1,30 @@
 version: '3.7'
 
 services:
-  email-module:
-    build: .
+  core:
+    build: ./core
+    container_name: 'email_module'
     volumes:
-      - ./:/app
-    container_name: 'email-module'
+      - ./core:/app
+    # depends_on:
+    #   - mysql
     ports:
       - 32801:8080
+
   mysql:
     image: mysql:5.6
-    container_name: 'mysql-email-module'
+    container_name: 'email_mysql'
     ports:
       - 32800:3306
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: email_module
+
+  front_end:
+    image: 'lrabbt/angular-cli:node-10.7.0-slim'
+    build: ./front_end
+    container_name: 'email_front_end'
+    volumes:
+     - ./front_end:/app
+    ports:
+     - 32750:4200
