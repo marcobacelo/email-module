@@ -1,3 +1,8 @@
+<h1 align="center">
+  <img src="spring.png" alt="logo_spring" width="550px" />
+  <img src="angular.png" alt="logo_angular" width="220px" />
+</h1>
+
 # Email Module Core #
 
 ## Objectives ##
@@ -16,13 +21,20 @@ It's a simple service for send emails
 
 https://docs.docker.com/compose/install/#install-compose
 
-#### Setting Up Database Connection ####
+#### Setting Up Database Connection and Mail variables ####
 
-If needed, open `src/main/resources/application.properties` and change environment variables.
+Unfortunatelly, you'll need to open `src/main/resources/application.properties` and change environment mail variables
+
+I'm working for fix that :)
+
+### Test the endpoints
+
+The endpoints can be tested with a Collection of Postman inside the project,
+search for: `email_module.postman_collection.json`
 
 #### Composing up! ####
 
-In your application directory, run:
+In your application directory, run:V
 
 ```bash
 docker-compose up -d
