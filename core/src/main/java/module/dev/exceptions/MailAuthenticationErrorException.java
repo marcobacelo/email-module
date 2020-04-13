@@ -15,6 +15,6 @@ public class MailAuthenticationErrorException extends SmtpException {
     }
 
     public MailAuthenticationErrorException(String message, String log) {
-        super(message, log);
+        super(DEFAULT_MESSAGE, message, log);
     }
 }

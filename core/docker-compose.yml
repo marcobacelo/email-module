@@ -1,0 +1,10 @@
+version: '3.7'
+
+services:
+  email-module:
+    build: .
+    volumes:
+      - ./:/app
+    container_name: 'email-module'
+    ports:
+      - 32801:8080

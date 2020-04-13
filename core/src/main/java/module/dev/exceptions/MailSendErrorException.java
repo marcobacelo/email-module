@@ -15,6 +15,6 @@ public class MailSendErrorException extends SmtpException {
     }
 
     public MailSendErrorException(String message, String log) {
-        super(message, log);
+        super(DEFAULT_MESSAGE, message, log);
     }
 }
